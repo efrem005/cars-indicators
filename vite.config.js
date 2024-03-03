@@ -7,5 +7,6 @@ export default defineConfig({
     server: {
         host: '192.168.3.15',
         port: 5000
-    }
+    },
+    base: '/cars-indicators'
 })
