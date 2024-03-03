@@ -1,12 +1,10 @@
 import mqtt from 'mqtt'
 import {useEffect, useState} from "react";
+import config from '../config'
 
 const useMqtt = () => {
 
-    const client = mqtt.connect({
-        protocol: 'ws',
-        host: '192.168.3.15',
-        port: Number(8080),
+    const client = mqtt.connect(`ws://${config.host}:${config.port}`,{
         clientId: `mqtt_${Math.random().toString(16).substring(2, 8)}`,
         protocolVersion: 5
     });
