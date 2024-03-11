@@ -5,11 +5,10 @@ import mkcert from 'vite-plugin-mkcert'
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [mkcert(), react()],
-    base: '/cars-indicators/',
     server: {
         https: true,
         proxy: {
-            '/cars-indicators/mqtt': {
+            '/mqtt': {
                 target: 'ws://5.189.193.132:9001',
                 changeOrigin: true,
                 secure: false,

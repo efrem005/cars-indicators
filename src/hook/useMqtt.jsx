@@ -49,7 +49,7 @@ export const Mqtt = ({children}) => {
         if (clientRef.current) return;
 
         try {
-            clientRef.current = MQTT.connect( `wss://${window.location.host}/cars-indicators/mqtt`, {
+            clientRef.current = MQTT.connect( `wss://${window.location.host}/mqtt`, {
                 clientId: `mqtt_${Math.random().toString(16).substring(2, 8)}`,
                 // rejectUnauthorized: true
             })
