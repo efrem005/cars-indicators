@@ -1,12 +1,20 @@
 import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
+import mkcert from 'vite-plugin-mkcert'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
+    plugins: [mkcert(), react()],
+    base: '/cars-indicators/',
     server: {
-        host: '192.168.3.15',
-        port: 5000
-    },
-    base: '/cars-indicators'
+        https: true,
+        proxy: {
+            '/cars-indicators/mqtt': {
+                target: 'ws://5.189.193.132:9001',
+                changeOrigin: true,
+                secure: false,
+                ws: true
+            },
+        }
+    }
 })

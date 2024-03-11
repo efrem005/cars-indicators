@@ -1,17 +1,22 @@
-import './App.css';
 import Status from './components/Status';
-import useMqtt from './hook/useMqtt'
+import {useContext} from "react";
+import {MqttContext} from "./hook/useMqtt.jsx";
+
 function App() {
 
-    const { priora, statusBme280, statusCars, statusPriora, volt } = useMqtt()
+    const {load} = useContext(MqttContext)
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Status statusBme280={statusBme280} statusCars={statusCars} statusPriora={statusPriora} priora={priora} volt={volt} />
-      </header>
-    </div>
-  );
+
+
+    if (!load) return ''
+
+    return (
+        <div className="container m-auto">
+            <header className="flex flex-col gap-3">
+                <Status/>
+            </header>
+        </div>
+    );
 }
 
 export default App;
